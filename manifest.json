@@ -1,0 +1,66 @@
+{
+
+  "manifest_version": 2,
+  "name": "Sharepoint Schedulify",
+  "version": "1.0",
+  "applications": {
+    "gecko": {
+      "id": "asif.ak@poornam.com"
+    }
+  },
+
+  "description": "Adds a red border to all webpages matching mozilla.org.",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "browser_action": {
+    "default_icon": "/icons/border-48.png",
+    "default_popup": "/html/popup.html"
+  },
+
+  "web_accessible_resources" : [
+    "/img/*"
+  ],
+
+  "permissions": [
+    "storage",
+    "http://*/*",
+    "https://*/*",
+    "activeTab",
+    "contextMenus",
+    "downloads"
+  ],
+
+  "background": {
+    "scripts": [
+      "/lib/jquery-3.3.1.min.js",
+      "/js/API.js",
+      "/js/background.js"
+    ]
+  },
+
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "/lib/jquery-3.3.1.min.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [ "*://zerobug.in/*" ],
+      "css": [
+        "/css/index.css"
+      ],
+      "js": [
+        "/lib/jquery-3.3.1.min.js",
+        "/js/index.js"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+
+}

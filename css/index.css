@@ -1,0 +1,19 @@
+/* index.css */
+
+.inject-container{
+  border-radius: 5%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 0px;
+  position: fixed;
+  right: 0;
+  bottom: 50%;
+  transform: translate(0, 50%);
+  z-index: 9999999999999999;
+  font-family: Open Sans, Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,system-ui,sans-serif !important;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  width: 300px;
+  height: 300px;
+  background-color: #ff9400;
+  background-image: linear-gradient(47deg,#e31586 0%, #fc4054 51%, #ff9641 100%);
+}

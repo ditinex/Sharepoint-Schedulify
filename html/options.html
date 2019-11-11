@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Options for Keywords Everywhere</title>
+        <meta charset="utf-8">
+        <link href="/img/icon16.png" rel="icon" type="image/png" sizes="16x16"/>
+        <link href="/img/icon32.png" rel="icon" type="image/png" sizes="32x32"/>
+        <link rel="stylesheet" href="/css/options.css"/>
+
+    </head>
+    <body>
+        <header>
+            <iframe src="https://keywordkeg.com/ke/1/header.php" width="100%" style="border:none" scrolling="no"></iframe>
+        </header>
+
+        <div class="maintenance-msg hidden">Keywords Everywhere is currently undergoing maintenance</div>
+
+        <div class="error-msg hidden"></div>
+
+        <hr/>
+        <section class="content">
+            <div class="container">
+
+                <div>
+                    <div class="api-settings flexbox"> <!-- API Settings -->
+
+                        <div>
+                            <h3>API key</h3>
+                            <div>
+                                <input type="text" id="apiKey" placeholder="API key"/>
+                                <span class="api-btn" id="validate">Validate</span>
+
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <h3>Country</h3>
+                            <div>
+                                <select id="country"></select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3>Currency</h3>
+                            <div>
+                                <select id="currency"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="status"></div>
+                </div>
+
+                <div class="dataSource">
+                    <h3>Data Source</h3>
+                    <div class="flexbox center">
+                        <label class="container">
+                            <input type="radio" id="dataSource" name="input-dataSource" value="gkp">
+                            <span class="radiobtn"></span>Google Keyword Planner
+                        </label>
+                        <label class="container">
+                            <input type="radio" id="dataSource" name="input-dataSource" value="cli">
+                            <span class="radiobtn"></span>Google Keyword Planner + Clickstream data
+                        </label>
+                    </div>
+                </div>
+
+                <div class="metrics"> <!-- Metrics -->
+
+                    <h3>Enable/Disable metrics</h3>
+                    <div class="metricsList flexbox">
+                        <ul id="metricsList">
+                            <li>
+
+                                <div class="highlight-row flexbox center">
+                                    <label class="container">Volume
+                                        <input type="checkbox" data-metric="vol">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="highlight-row flexbox center">
+                                    <label class="container">CPC
+                                        <input type="checkbox" data-metric="cpc">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="highlight-row flexbox center">
+                                    <label class="container">
+                                        <input type="checkbox" data-metric="comp">Competition
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="select-options">
+                            <li>
+                                <div class="highlight-row flexbox center">
+                                        <label class="container" for="highlightVolume">Highlight Volume
+                                            <input type="checkbox" id="highlightVolume">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <select id="highlightVolumeCond">
+                                            <option value="gt"> > </option>
+                                            <option value="eq"> == </option>
+                                            <option value="lt"> < </option>
+                                        </select>
+                                        <input type="number" id="highlightVolumeValue" min="0" value="1000">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="highlight-row flexbox center">
+                                        <label class="container" for="highlightCPC">Highlight CPC
+                                            <input type="checkbox" id="highlightCPC">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <select id="highlightCPCCond">
+                                            <option value="gt"> > </option>
+                                            <option value="eq"> == </option>
+                                            <option value="lt"> < </option>
+                                        </select>
+                                        <input type="number" id="highlightCPCValue" min="0" value="1.5">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="highlight-row flexbox center">
+                                        <label class="container" for="highlightComp">Highlight Competition
+                                            <input type="checkbox" id="highlightComp">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <select id="highlightCompCond">
+                                            <option value="gt"> > </option>
+                                            <option value="eq"> == </option>
+                                            <option value="lt"> < </option>
+                                        </select>
+                                        <input type="number" id="highlightCompValue" min="0" value="0.5">
+                                </div>
+                        </ul>
+                    </div>
+                    <div class="flexbox colorpicker">
+                        <label class="highlightColorLabel">Highlight Color</label>
+                        <span id="colorpicker-holder"><input type="color" id="highlightColor" value="#D3FFCC"/></span>
+                    </div>
+
+
+                </div>
+
+                <div class="websites"> <!-- Supported Websites  -->
+
+                    <h3>Supported websites</h3>
+                    <ul id="sourceList">
+                    </ul>
+                    <div class="info-line">The volume shown on Bing, YouTube, Amazon & Ebay is the total number of monthly searches for that keyword at Google.com</div>
+
+                </div>
+
+                <hr/>
+
+                <div class="miscellaneous">  <!-- Miscellaneous Settings  -->
+
+                    <h3>Miscellaneous Settings</h3>
+
+                    <div class="flexbox">
+
+                        <ul>
+                            <li class="checkbox">
+
+                                    <label class="container" for="showAddAllButton">Show "Add All Keywords" Button
+                                        <input type="checkbox" id="showAddAllButton">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                            </li>
+                            <li class="checkbox">
+
+                                    <label class="container" for="showExportButton">Show "Export CSV" Button
+                                        <input type="checkbox" id="showExportButton">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                            </li>
+                            <li class="checkbox">
+
+                                    <label class="container" for="showMetricsForSuggestions">Show metrics for search suggestions
+                                        <input type="checkbox" id="showMetricsForSuggestions">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                            </li>
+                        </ul>
+                        <ul class="select-options">
+                            <li>
+                                <div class="highlight-row flexbox center">
+                                    <div>
+                                        <label>Location of metrics</label>
+                                        <select id="googlePos">
+                                            <option value="default">Under Search Box</option>
+                                            <option value="abvres">Above Search Results</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </section>
+        <footer>
+
+            <div class="container">
+                <div class="info-line">If you find this extension useful, please give it a rating at the&nbsp; <a href="https://chrome.google.com/webstore/detail/keywords-everywhere/hbapdpeemoojbophdfndmlgdhppljgmp/reviews" class="link chromestore" target="_blank">Chrome web store</a>&nbsp;&nbsp; or <a href="https://addons.mozilla.org/en-US/firefox/addon/keywords-everywhere/" class="link firefox" target="_blank">Firefox add-on page</a></div>
+            </div>
+            <br>
+
+        </footer>
+
+
+        <script type="text/javascript" src="/lib/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="/js/SourceList.js"></script>
+        <script type="text/javascript" src="/js/Status.js"></script>
+        <script type="text/javascript" src="/js/options.js"></script>
+
+
+
+
+    </body>
+</html>
