@@ -1,5 +1,7 @@
 (function(){
 
+  var toggleSwitchStatus = true;
+
   var init = function(){
 
     chrome.runtime.sendMessage({cmd: 'app.getStatus'}, function(appStatus){
@@ -9,12 +11,19 @@
       var body = $('body');
       chrome.runtime.sendMessage({cmd: 'app.getPage'}, function(data){
         body.prepend(data);
+        toggleSwitchImg();
       });
 
     });
   };
 
-  function saveOptions(e) {
+  function toggleSwitchImg(){
+    closeimg = browser.runtime.getURL("img/close.png");
+    if(toggleSwitchStatus)
+      $('toggle-button').html('<img src="'+closeimg+'">')
+  }
+
+  function getDate() {
   	
   }
 

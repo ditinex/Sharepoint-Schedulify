@@ -12,6 +12,16 @@
   font-family: Open Sans, Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,system-ui,sans-serif !important;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  width: 350px;
+  height: 300px;
+}
+
+.minimize{
+
+}
+
+.toggle-content{
+  display: none;
   width: 300px;
   height: 300px;
   background-color: #ff9400;
