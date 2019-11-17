@@ -514,12 +514,13 @@ button.ui-button::-moz-focus-inner {
 	margin: -10px 0 0 0;
 	padding: 1px;
 	height: 20px;
+	content: 'x';
 }
 .ui-dialog .ui-dialog-content {
 	position: relative;
 	border: 0;
 	padding: .5em 1em;
-	background: none;
+	background: #F7BFA8;
 	overflow: auto;
 }
 .ui-dialog .ui-dialog-buttonpane {
@@ -908,9 +909,9 @@ body .ui-tooltip {
 	color: #333333;
 }
 .ui-widget-header {
-	border: 1px solid #dddddd;
-	background: #e9e9e9;
-	color: #333333;
+	border: 1px solid #FB7D79;
+	background: #FB7D79;
+	color: #000;
 	font-weight: bold;
 }
 .ui-widget-header a {
@@ -1069,10 +1070,10 @@ a.ui-button:active,
 }
 .ui-icon,
 .ui-widget-content .ui-icon {
-	background-image: url("images/ui-icons_444444_256x240.png");
+	background-image: url("http://code.jquery.com/ui/1.12.1/themes/base/images/ui-icons_444444_256x240.png");
 }
 .ui-widget-header .ui-icon {
-	background-image: url("images/ui-icons_444444_256x240.png");
+	background-image: url("http://code.jquery.com/ui/1.12.1/themes/base/images/ui-icons_444444_256x240.png");
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon,
@@ -1093,7 +1094,7 @@ a.ui-button:active,
 	background-image: url("images/ui-icons_cc0000_256x240.png");
 }
 .ui-button .ui-icon {
-	background-image: url("images/ui-icons_777777_256x240.png");
+	background-image: url("http://code.jquery.com/ui/1.12.1/themes/base/images/ui-icons_777777_256x240.png");
 }
 
 /* positioning */

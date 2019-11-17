@@ -39,6 +39,129 @@
   transition: width 0.4s;
 }
 
+.highlight{
+  background-color: #F3B4CF; font-weight: bold;
+}
+
+
+/* Radio Button */
+
+.inputGroup2 {
+    background-color: rgba(255,255,255,0.3);
+    display: block;
+    margin: 10px 0;
+    position: relative;
+    width: 100%;
+}
+.inputGroup2 label {
+      padding: 12px 5px;
+      display: block;
+      text-align: left;
+      color: #3C454C;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      transition: color 200ms ease-in;
+      overflow: hidden;
+      font-size: 12px;
+}
+.inputGroup2 label:before {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        content: '';
+        background-color: rgba(0,0,0,0.5);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale3d(1, 1, 1);
+        transition: all 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0;
+        z-index: -1;
+      }
+
+.inputGroup2 label:after {
+        width: 32px;
+        height: 32px;
+        content: '';
+        border: 2px solid #D1D7DC;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+        background-repeat: no-repeat;
+        background-position: 2px 3px;
+        border-radius: 50%;
+        z-index: 2;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        transition: all 200ms ease-in;
+      }
+
+.inputGroup2 input:checked ~ label {
+      color: #fff;
+}
+.inputGroup2 input:checked ~ label:before {
+        transform: translate(-50%, -50%) scale3d(56, 56, 1);
+        opacity: 1;
+      }
+
+.inputGroup2 input:checked ~ label:after {
+        background-color: #EF515F;
+        border-color: #F4838A;
+      }
+
+.inputGroup2 input {
+      width: 32px;
+      height: 32px;
+      order: 1;
+      z-index: 2;
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      visibility: hidden;
+    }
+
+/* General Buttons */
+.button {
+  width: 130px;
+  background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
+  border: none;
+  border-radius: 5px;
+  color: #fbfbfb;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  font-size: 15px;
+  text-align: center;
+  box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid #FFF;
+
+/* Just for presentation */  
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.links {
+  width: 150px;
+  padding: 5px;
+  background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%);
+  border-radius: 5px;
+  color: #fbfbfb;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  font-size: 15px;
+  text-align: center;
+  box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid #FFF;
+}
+
+
 .toggle-content{
   padding: 5px;
 }

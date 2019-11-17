@@ -14,6 +14,25 @@
         $('#app-status').prop('checked', appStatus);
       });
     });
+    setupMenu();
+  };
+
+  function setupMenu(){
+    $('li a').click(function(){
+      run($(this).attr('cmd'));
+    });
+  }
+
+  var run = function(action){
+    if (action === 'create') {
+      chrome.tabs.create({url: '/html/create.html'});
+    }
+    else if (action === 'manual') {
+      chrome.tabs.create({url: 'https://keywordseverywhere.com/ke/1/manual.php'});
+    }
+    else if (action === 'favorite') {
+      chrome.tabs.create({url: 'https://keywordseverywhere.com/ke/1/favorites.php'});
+    }
   };
 
 
@@ -31,18 +50,7 @@
   };
 
 
-  var run = function(action){
-    if (action === 'popup') return;
-    else if (action === 'settings') {
-      chrome.tabs.create({url: '/html/options.html'});
-    }
-    else if (action === 'manual') {
-      chrome.tabs.create({url: 'https://keywordseverywhere.com/ke/1/manual.php'});
-    }
-    else if (action === 'favorite') {
-      chrome.tabs.create({url: 'https://keywordseverywhere.com/ke/1/favorites.php'});
-    }
-  };
+  
 
 
   var populateCountries = function(settings){

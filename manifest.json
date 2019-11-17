@@ -30,7 +30,8 @@
     "https://*/*",
     "activeTab",
     "contextMenus",
-    "downloads"
+    "downloads",
+    "tabs"
   ],
 
   "background": {
@@ -51,7 +52,7 @@
       "run_at": "document_end"
     },
     {
-      "matches": [ "*://zerobug.in/*" ],
+      "matches": [ "*://sharepoint.cirrushosting.com/KB/t2t/Lists/Activities/DispForm.aspx*" ],
       "css": [
         "/css/jquery-ui.css",
         "/css/index.css"
@@ -60,6 +61,19 @@
         "/lib/jquery-3.3.1.min.js",
         "/js/jquery-ui.js",
         "/js/index.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [ "*://portal.cirrushosting.com/admin/index.php?cmd=tickets&action=new&client_id*" ],
+      "css": [
+        "/css/jquery-ui.css",
+        "/css/index.css"
+      ],
+      "js": [
+        "/lib/jquery-3.3.1.min.js",
+        "/js/jquery-ui.js",
+        "/js/openticket.js"
       ],
       "run_at": "document_end"
     }
