@@ -1,5 +1,7 @@
 (function(){
 
+  var valid = true;
+
   var init = function(){
     initUI()    
   };
@@ -8,64 +10,46 @@
     chrome.runtime.sendMessage({cmd: 'app.getStatus'}, function(appStatus){
       $('#app-status').prop('checked', appStatus);
     });
+    chrome.runtime.sendMessage({cmd: 'app.getKey'}, function(response){
+      if(!response)
+        valid=false;
+      setupMenu();
+    });
 
     $('#app-status').change(function() {
       chrome.runtime.sendMessage({cmd: 'app.toggleStatus'}, function(appStatus){
         $('#app-status').prop('checked', appStatus);
       });
     });
-    setupMenu();
+    $('#validate').click(function() {
+      name = $('#name').val()
+      key = $('#key').val()
+      chrome.runtime.sendMessage({cmd: 'api.validate', data: {name: name, key: key}}, function(response){
+        valid = response
+        setupMenu();
+      });
+    });
   };
 
   function setupMenu(){
-    $('li a').click(function(){
-      run($(this).attr('cmd'));
-    });
+    if(!valid){
+      $('.validator').removeClass('hidden');
+    }
+    else{
+      $('.validator').addClass('hidden');
+      $('li a').click(function(){
+        run($(this).attr('cmd'));
+      });
+    }
   }
 
   var run = function(action){
     if (action === 'create') {
       chrome.tabs.create({url: '/html/create.html'});
     }
-    else if (action === 'manual') {
-      chrome.tabs.create({url: 'https://keywordseverywhere.com/ke/1/manual.php'});
+    else if (action === 'newsfeed') {
+      chrome.tabs.create({url: '/html/newsfeed.html'});
     }
-    else if (action === 'favorite') {
-      chrome.tabs.create({url: 'https://keywordseverywhere.com/ke/1/favorites.php'});
-    }
-  };
-
-
-  var showDisabledWarning = function(){
-    $('#disabledWarning').removeClass('hidden');
-    setTimeout(function(){
-      $('#disabledWarning').addClass('hidden');
-    }, 2000);
-  };
-
-  var injectIframe = function(params){
-    if (!params.apiKey) return;
-    var src = 'https://keywordseverywhere.com/ke/popup.php?apiKey=' + params.apiKey + '&t=' + Date.now();
-    $('<iframe/>').attr('src', src).appendTo($('#iframe-root'));
-  };
-
-
-  
-
-
-  var populateCountries = function(settings){
-    chrome.runtime.sendMessage({cmd: 'api.getCountries'}, function(json){
-      if (!json || !Object.keys(json).length) {
-        return;
-      }
-      for (var key in json) {
-        var $option = $('<option/>')
-          .attr('value', key)
-          .text(json[key]);
-        if (settings.country === key) $option.attr('selected', 'true');
-        $option.appendTo($('#country'));
-      }
-    });
   };
 
 

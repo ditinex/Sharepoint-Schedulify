@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
-        <link rel="stylesheet" type="text/css" href="/css/popup.css">
-    </head>
-    <body>
-        <h1>Team BlitzKreig</h1>
-        <div class="switch-container">
-	        <label class="switch">
-	        	<input id="app-status" type="checkbox">
-	        	<span class="slider round"></span>
-	        </label>
-	    </div>
-	    <div class="pure-menu">    
-            <ul class="pure-menu-list">  
-              <li class="pure-menu-item">  
-                <a href="#" cmd="list" class="pure-menu-link">List All</a>  
-              </li>  
-              <li class="pure-menu-item">  
-                <a href="#" cmd="create" class="pure-menu-link">Create/Update</a>  
-              </li>  
-              <li class="pure-menu-item">  
-                <a href="#" class="pure-menu-link">Delete</a>  
-              </li>  
-              <li class="pure-menu-item">  
-                <a href="#" class="pure-menu-link">Newsfeed</a>  
-              </li>  
-          </ul>  
-        </div>
-	   	<script type="text/javascript" src="/lib/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="/js/popup.js"></script>
-    </body>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+    <link rel="stylesheet" type="text/css" href="/css/popup.css">
+  </head>
+  <body>
+    <h1>Team BlitzKreig</h1>
+    <div class="switch-container">
+      <label class="switch">
+        <input id="app-status" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="switch-container validator hidden">
+      <div class="verification">
+        <input type="text" id="name" name="name" placeholder="Name" required>
+        <input type="text" id="key" name="key" placeholder="API Key" required>
+        <button class="button" id="validate">Validate</button>
+      </div>
+    </div>
+    <div class="pure-menu">    
+      <ul class="pure-menu-list">   
+        <li class="pure-menu-item">  
+          <a href="#" cmd="create" class="pure-menu-link">Sharepoint Client</a>  
+        </li>   
+        <li class="pure-menu-item">  
+          <a href="#" cmd="newsfeed" class="pure-menu-link">Newsfeed</a>  
+        </li>  
+      </ul>  
+    </div>
+    <script type="text/javascript" src="/lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/popup.js"></script>
+  </body>
 </html>

@@ -1,7 +1,7 @@
 {
 
   "manifest_version": 2,
-  "name": "Sharepoint Schedulify",
+  "name": "Blitzkreig",
   "version": "1.0",
   "applications": {
     "gecko": {
@@ -9,7 +9,7 @@
     }
   },
 
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "description": "Blitzkreig Firefox plugin.",
 
   "icons": {
     "48": "icons/border-48.png"
@@ -37,7 +37,6 @@
   "background": {
     "scripts": [
       "/lib/jquery-3.3.1.min.js",
-      "/js/API.js",
       "/js/background.js"
     ]
   },
@@ -47,7 +46,8 @@
     {
       "matches": ["<all_urls>"],
       "js": [
-        "/lib/jquery-3.3.1.min.js"
+        "/lib/jquery-3.3.1.min.js",
+        "/js/jquery-ui.js"
       ],
       "run_at": "document_end"
     },

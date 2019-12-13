@@ -13,7 +13,6 @@
   var activeClient = '';
 
   var init = function(){
-
     chrome.runtime.sendMessage({cmd: 'app.getStatus'}, function(appStatus){
       if(appStatus == false)
         return;
@@ -24,7 +23,6 @@
         initUI()
         toggleSwitchImg();
         toggleSwitch();
-        ifClientOsUpdate();
         lastCall();
       });
 
@@ -59,7 +57,7 @@
   }
 
   function validateAndList(){
-    let pattern = /Client server OS updates/;
+    let pattern = RegExp('.*Client Server OS Update.*|Send OS update','ig');
     if(pattern.test($('#SPFieldText').text())){
       clientOsUpdate = true;
       getClientList();
@@ -74,7 +72,7 @@
       clientData = data;
       let body = $('#SPFieldNote div').html();
       Object.keys(clientData).forEach(function(item) {
-        var regex = RegExp('.*'+item+'.*','g');
+        var regex = RegExp('.*'+item+'.*','ig');
         if(regex.test(body)){
           body = body.replace(item, '<span class="highlight">'+item+'</span>');
           clients.push(item);
@@ -112,11 +110,11 @@
       return;
     let details = clientData[activeClient];
 
-    ui = '<p style="font-size: 14px;"><strong>Client :</strong> '+activeClient+'<br> <strong>Client id :</strong> '+details['client_id']+'<br> <strong>Service id :</strong> '+details['service_id']+'<br> <strong>Type :</strong> '+details['type']+'<br><strong>VM id :</strong> '+details['vmid']+'<br> <strong>Date :</strong> '+date+'</p>';
+    ui = '<p style="font-size: 14px;"><strong>Client :</strong> '+activeClient+'<br> <strong>Client id :</strong> '+details['client_id']+'<br> <strong>Service id :</strong> '+details['service_id']+'<br> <strong>Type :</strong> '+details['type']+'<br><strong>VM id :</strong> '+details['vm_id']+'<br><strong>Note :</strong> '+details['note']+'<br> <strong>Date :</strong> '+date+'</p>';
 
-    ui = ui+'<div style="text-align:center"><a target="_blank" href="'+clientLink+''+details['client_id']+'" class="links">Client Profile<a/> <a target="_blank" href="'+openTicketLink+''+details['client_id']+'" class="links">Service Profile<a/>';
-    if(details['vmid'])
-      ui=ui+' <a target="_blank" href="'+openTicketLink+''+details['client_id']+'" class="links">VM<a/>';
+    ui = ui+'<div style="text-align:center"><a target="_blank" href="'+clientLink+''+details['client_id']+'" class="links">Client Profile<a/> <a target="_blank" href="'+serviceLink+''+details['service_id']+'" class="links">Service Profile<a/>';
+    if(details['vm_id'])
+      ui=ui+' <a target="_blank" href="'+VMLink+''+details['vm_id']+'" class="links">VM<a/>';
     ui=ui+'</div>';
     $('#tabs-2').html(ui);
     
@@ -125,6 +123,10 @@
 
   function addOptionUI(details){
     let ticketopener = openTicketLink+''+details['client_id'];
+
+    date = date.substr(0,date.indexOf(' ')+1);
+
+    details['template'] = details['template'].replace("$DATE", date);
 
     chrome.runtime.sendMessage({cmd: 'app.setTemplate', data: { 'ticketopener': ticketopener, 'template': details['template'], 'cc': details['cc'], 'subject': details['subject'] } });
 
@@ -137,10 +139,6 @@
 
   function getDate() {
   	date = $('#SPFieldDateTime').text().trim();
-  }
-
-  function restoreOptions() {
-  	
   }
 
   return {

@@ -1,44 +1,249 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Blitzkreig</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" href="/css/index.css">
-        <style>
-            body{
-                width:100%;
-            }
-        </style>
-    </head>
-    <body>
-        <div style="display:block; padding:10px; text-align:center;margin-bottom:20px;">
-            <h1 style="text-align:center;font-size:35px;width: 350px; margin:auto;">Team BlitzKreig</h1>
-        </div>
+<head>
+    <title>Blitzkreig</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css">
+    <style>
+        body{
+            width:100%;
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            text-align: center;
+            font-size: 35px;
+            background: -webkit-linear-gradient(47deg,#e31586 0%, #fc4054 51%, #ff9641 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        * {
+          box-sizing: border-box;
+      }
 
-        <div id="tabs" style="border: 0px solid #FFF;background-color: rgba(0,0,0,0);margin-top: 5px;">
-        <ul style="border: none; background-color: rgba(0,0,0,0);border-radius: 0px;border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);">
-            <li><a href="#tabs-1">Client</a></li>
-            <li><a href="#tabs-2">Details</a></li>
-            <li><a href="#tabs-3">Option</a></li>
-        </ul>
-        <div id="tabs-1">
-            <p>Loading ....</p>
+      input[type=text], select, textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+      }
+
+      label {
+          padding: 12px 12px 12px 0;
+          display: inline-block;
+      }
+
+      button {
+          background-color: #FB7D79;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          float: right;
+      }
+
+      button:hover {
+          background-color: #FB9D7E;
+      }
+
+      .border{
+        border: 1px solid #BAC2CB;
+      }
+
+      .container {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+      }
+
+      .col-25 {
+          float: left;
+          width: 25%;
+          margin-top: 6px;
+      }
+
+      .col-75 {
+          float: left;
+          width: 75%;
+          margin-top: 6px;
+      }
+
+      .row:after {
+          content: "";
+          display: table;
+          clear: both;
+      }
+
+
+    @media screen and (max-width: 600px) {
+          .col-25, .col-75, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+
+.list-type2{
+width:400px;
+margin:0 auto;
+}
+
+.list-type2 ol{
+counter-reset: li;
+list-style: none;
+*list-style: decimal;
+font-size: 15px;
+font-family: 'Raleway', sans-serif;
+padding: 0;
+margin-bottom: 4em;
+}
+
+.list-type2 ol ol{
+margin: 0 0 0 2em;
+}
+
+.list-type2 a{
+position: relative;
+display: block;
+padding: .4em .4em .4em 2em;
+*padding: .4em;
+margin: .5em 0;
+background: #FC756F;
+color: #444;
+text-decoration: none;
+transition: all .2s ease-in-out;
+}
+
+.list-type2 a:hover, .active{
+background: #d6d4d4;
+text-decoration:none;
+transform: scale(1.1);
+}
+
+.list-type2 a:before{
+content: counter(li);
+counter-increment: li;
+position: absolute;
+left: -1.3em;
+top: 50%;
+margin-top: -1.3em;
+background:#FC756F;
+height: 2em;
+width: 2em;
+line-height: 2em;
+border: .3em solid #fff;
+text-align: center;
+font-weight: bold;
+color:#FFF;
+}
+</style>
+</head>
+<body>
+    <div style="display:block; padding:10px; text-align:center;margin-bottom:20px;">
+        <h1 style="text-align:center;font-size:35px;width: 350px; margin:auto;">Team BlitzKreig</h1>
+    </div>
+
+    <hr>
+
+    <div style="width:50%;float:left;text-align:center;">
+        <div class="container">
+            <form action="#" id="create_form" method="POST">
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">Client</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="client" name="client" placeholder="Client" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">Client id <span id="gotoclient">>> </span></label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="client_id" name="client_id" placeholder="Client id" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">Service id</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="service_id" name="service_id" placeholder="service id" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">Type</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="type" name="type" placeholder="VM/Dedicated" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">VM id</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="vm_id" name="vm_id" placeholder="vm_id">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">Note</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="note" name="note" placeholder="Note">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">Subject</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">CC</label>
+                    </div>
+                    <div class="col-75">
+                      <input type="text" id="cc" name="cc" placeholder="CC separated by comma">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <label for="fname">Template</label>
+                    </div>
+                    <div class="col-75">
+                      <textarea id="template" style="width:100%;height:250px;" name="template" placeholder="Template" required></textarea><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                      <button id="delete">Delete</button>
+                    </div>
+                    <div class="col-75">
+                      <button id="create">Create/Update</button>
+                    </div>
+                </div>
+            </form>  
         </div>
-        <div id="tabs-2">
-            <p>Loading ....</p>
-        </div>
-        <div id="tabs-3">
-            <p>Loading ....</p>
+    </div>
+    <div style="width:50%;float:left;">
+        <center> All Clients </center><br>
+        <div class="list-type2">
+            <ol class="pure-menu-list">
+                <li><a href="#" client="" class="pure-menu-item">Loading ....</a></li>
+            </ol>
         </div>
     </div>
 
-
-        <script type="text/javascript" src="/lib/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="/js/jquery-ui.js"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/js/operation.js"></script>
 
     </body>
 </html>
